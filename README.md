@@ -27,7 +27,7 @@ To determine the most commercially viable marketing strategy, management designe
 - **Primary KPI**: Weekly Sales Revenue (recorded in thousands of USD, `$k`)
 
 ### Methodology & Analytical Framework
-1. **A/B/n Randomized Controlled Trial (RCT) Design**:
+1. **A/B/C Testing (Multi-Variant Campaign Experiment)**:
    - Random allocation of 137 store branches into 3 independent treatment cohorts (Promotion 1: 172 observations, Promotion 2: 188 observations, Promotion 3: 188 observations).
 2. **Data Cleansing & Sanity Check**:
    - Verification of zero missing values, zero duplicated records, and validation of feature data types.
