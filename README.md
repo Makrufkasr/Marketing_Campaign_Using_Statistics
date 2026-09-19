@@ -1,28 +1,48 @@
-# 📈 Optimizing Fast-Food Marketing Campaign Performance via A/B Testing & Statistical ROI Analysis
+# Fast-Food Marketing Campaign Optimization via A/B Testing & Financial ROI Analysis
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458.svg)](https://pandas.pydata.org/)
 [![SciPy](https://img.shields.io/badge/SciPy-Statistical%20Testing-8CAAE6.svg)](https://scipy.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Interactive%20Dashboard-FF4B4B.svg)](https://streamlit.io/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Makrufkasr/Marketing_Campaign_Using_Statistics/blob/main/Marketing_Campaigns_Using_Statistics_.ipynb)
 
 ---
 
-## 📌 1. Executive Summary
+## 1. Problem Statement & Business Context
 
-Sebuah jaringan restoran cepat saji (*fast-food chain*) berencana meluncurkan menu baru. Untuk memaksimalkan pendapatan dan efisiensi biaya pemasaran, manajemen menguji **3 strategi promosi berbeda (Campaign 1, 2, dan 3)** di 137 lokasi cabang selama 4 minggu (total 548 observasi mingguan).
+### Background & Business Problem
+A nationwide fast-food chain planned to introduce a new menu item across its store network. In a highly competitive retail food market, launching a new product without empirical marketing data poses significant financial risks, including misallocated promotional budgets, suboptimal customer reach, and lost revenue opportunities.
 
-### 🎯 Key Highlights:
-1. **Campaign 1 dan Campaign 3 menghasilkan rata-rata penjualan tertinggi**: Masing-masing sebesar **$58.10k** dan **$55.36k** per minggu per cabang.
-2. **Campaign 2 memiliki performa paling rendah**: Rata-rata hanya **$47.33k** per minggu per cabang.
-3. **Hasil Uji Signifikansi Statistik (Welch's t-test, $\alpha = 0.05$)**:
-   - Campaign 1 menghasilkan **peningkatan penjualan sebesar +22.8%** dibanding Campaign 2 ($p < 0.001$, signifikan secara statistik).
-   - Campaign 3 menghasilkan **peningkatan penjualan sebesar +17.0%** dibanding Campaign 2 ($p < 0.001$, signifikan secara statistik).
-   - Perbedaan performa antara **Campaign 1 vs Campaign 3 tidak signifikan secara statistik** ($p = 0.121$).
+To determine the most commercially viable marketing strategy, management designed a controlled A/B/n experiment testing **three distinct promotional campaigns (Campaign 1, Campaign 2, and Campaign 3)** across randomly selected market locations.
+
+### Core Business Questions
+1. **Primary Decision**: Which promotional campaign generates the greatest statistical and commercial lift in sales?
+2. **Market Segmentation**: Does campaign effectiveness vary across different market tiers (*Small*, *Medium*, *Large*) or store age profiles?
+3. **Financial Impact**: What is the projected net profit lift and Return on Marketing Investment (ROMI) under full-scale national rollout?
+
+### Experiment Scope & Dataset Parameters
+- **Locations Tested**: 137 individual store locations
+- **Test Duration**: 4 consecutive weeks per location (total 548 store-week observations)
+- **Market Segments**: Small (60 records), Medium (320 records), and Large (168 records)
+- **Primary KPI**: Weekly Sales Revenue (recorded in thousands of USD, `$k`)
 
 ---
 
-## 📊 2. Visualizations & Statistical Evaluation
+## 2. Executive Summary & Key Findings
+
+1. **Campaign 1 and Campaign 3 Delivered Superior Sales Performance**:
+   - Campaign 1 achieved the highest average weekly sales at **$58.10k** per store.
+   - Campaign 3 followed closely with an average of **$55.36k** per store.
+2. **Campaign 2 Significantly Underperformed**:
+   - Campaign 2 generated only **$47.33k** per store-week, lagging behind the winning campaigns.
+3. **Hypothesis Testing Results (Welch's Two-Sample t-Test, $\alpha = 0.05$)**:
+   - **Campaign 1 vs Campaign 2**: +22.8% sales lift ($p < 0.001$), statistically significant.
+   - **Campaign 3 vs Campaign 2**: +17.0% sales lift ($p < 0.001$), statistically significant.
+   - **Campaign 1 vs Campaign 3**: Difference of $2.73k/week was not statistically significant ($p = 0.121$).
+
+---
+
+## 3. Visualizations & Statistical Evaluation
 
 ![Sales Distribution](assets/sales_distribution.png)
 
@@ -30,118 +50,62 @@ Sebuah jaringan restoran cepat saji (*fast-food chain*) berencana meluncurkan me
 
 | Campaign Group | Sample Size ($n$) | Avg Sales / Week ($'000) | Std Deviation | vs Campaign 2 (Sales Lift) | Statistical Significance ($\alpha = 0.05$) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Promotion 1** | 172 | **$58.10k** | 16.55 | **+22.8%** | ✅ Significant ($p = 0.000$) |
-| **Promotion 2** | 188 | **$47.33k** | 15.11 | Baseline | - |
-| **Promotion 3** | 188 | **$55.36k** | 16.77 | **+17.0%** | ✅ Significant ($p = 0.000$) |
+| **Promotion 1** | 172 | **$58.10k** | 16.55 | **+22.8%** | Significant ($p = 0.000$) |
+| **Promotion 2** | 188 | **$47.33k** | 15.11 | Baseline | Baseline |
+| **Promotion 3** | 188 | **$55.36k** | 16.77 | **+17.0%** | Significant ($p = 0.000$) |
 
-> **Perbandingan Head-to-Head (Promotion 1 vs Promotion 3)**: $t = 1.556$, $p = 0.121$ *(Tidak terdapat perbedaan yang signifikan secara statistik pada tingkat kepercayaan 95%)*.
+> **Head-to-Head Comparison (Promotion 1 vs Promotion 3)**: $t = 1.556$, $p = 0.121$. The null hypothesis cannot be rejected; both campaigns are statistically comparable in revenue generation.
 
 ---
 
-## 🏢 3. Market Size Performance Breakdown
+## 4. Market Size Performance Breakdown
 
 ![Market Size Performance](assets/market_size_performance.png)
 
-- **Large Market**: Menghasilkan respon paling kuat terhadap promosi dengan rata-rata penjualan tertinggi di **Campaign 1 ($72.8k/wk)** dan **Campaign 3 ($77.2k/wk)**.
-- **Medium & Small Market**: Konsisten menunjukkan keunggulan Campaign 1 dan 3 dibanding Campaign 2.
+- **Large Market Tier**: Demonstrated the strongest revenue response, with Campaign 1 averaging **$72.8k/wk** and Campaign 3 averaging **$77.2k/wk**.
+- **Medium & Small Market Tiers**: Campaign 1 and Campaign 3 consistently outperformed Campaign 2 across all store maturity brackets.
 
 ---
 
-## 💼 4. Business Impact & Financial ROI Simulation
+## 5. Business Impact & Financial ROI Simulation
 
-Untuk mengilustrasikan dampak keputusan ini pada skala bisnis riil, dibuat simulasi penerapan kampanye pada **100 cabang restoran** selama **1 Kuartal (12 minggu)**:
+To demonstrate real-world financial implications, a commercial rollout simulation was conducted across **100 stores** over **1 Quarter (12 weeks = 1,200 store-weeks)**:
 
 ![Business Impact Simulation](assets/business_impact.png)
 
-### ⚙️ Asumsi Skenario Bisnis:
-- **Skala Rollout**: 100 Cabang
-- **Durasi Kampanye**: 12 Minggu (1 Kuartal = 1.200 *store-weeks*)
-- **Estimasi Gross Margin Menu**: 60%
-- **Biaya Pemasaran (Marketing Cost)**:
-  - **Campaign 1 (Omnichannel / Media Nasional)**: $1.200.000 ($1,2M)
-  - **Campaign 2 (Baseline)**: $400.000 ($0,4M)
-  - **Campaign 3 (In-Store Promo & Local Ads)**: $600.000 ($0,6M)
+### Commercial Simulation Assumptions
+- **Rollout Scale**: 100 Stores
+- **Campaign Horizon**: 12 Weeks (1 Quarter)
+- **Menu Gross Profit Margin**: 60%
+- **Estimated Marketing Investment**:
+  - Campaign 1 (Omnichannel Media & Broad Digital Reach): $1,200,000 ($1.2M)
+  - Campaign 2 (Standard Baseline Promotion): $400,000 ($0.4M)
+  - Campaign 3 (In-Store Merchandising & Localized Digital): $600,000 ($0.6M)
 
-### 📊 Simulasi Finansial (1 Kuartal):
+### Financial Model Projection (1 Quarter)
 
-| Metrik Finansial | Campaign 2 *(Baseline)* | Campaign 3 | Campaign 1 *(Winner)* | Selisih (C1 vs Baseline) |
+| Financial Metric | Campaign 2 (Baseline) | Campaign 3 | Campaign 1 (Winner) | Delta (C1 vs Baseline) |
 | :--- | :---: | :---: | :---: | :---: |
-| **Rata-rata Penjualan/Minggu/Toko** | $47.33k | $55.36k | **$58.10k** | **+$10.77k (+22.8%)** |
-| **Total Gross Revenue** | $56,80 Juta | $66,43 Juta | **$69,72 Juta** | **+$12,92 Juta** |
-| **Gross Profit (Margin 60%)** | $34,08 Juta | $39,86 Juta | **$41,83 Juta** | **+$7,75 Juta** |
-| **Marketing Campaign Cost** | $0,40 Juta | $0,60 Juta | **$1,20 Juta** | +$0,80 Juta |
-| **Net Profit Contribution** | $33,68 Juta | $39,26 Juta | **$40,63 Juta** | **+$6,95 Juta** |
-| **Return on Marketing Investment (ROMI)** | - | **9.63x** | **6.46x** | - |
+| **Average Weekly Sales per Store** | $47.33k | $55.36k | **$58.10k** | **+$10.77k (+22.8%)** |
+| **Total Gross Revenue** | $56.80M | $66.43M | **$69.72M** | **+$12.92M** |
+| **Gross Profit (60% Margin)** | $34.08M | $39.86M | **$41.83M** | **+$7.75M** |
+| **Marketing Campaign Expenditure** | $0.40M | $0.60M | **$1.20M** | +$0.80M |
+| **Net Profit Contribution** | $33.68M | $39.26M | **$40.63M** | **+$6.95M** |
+| **Incremental ROMI (vs Baseline)** | - | **9.63x** | **6.46x** | - |
 
 ---
 
-## 🧠 5. Strategic Decision Matrix & Recommendations
+## 6. Strategic Recommendations & Decision Matrix
 
-| Prioritas | Rekomendasi Aksi | Rasional Bisnis |
+| Priority | Action Item | Business Rationale |
 | :---: | :--- | :--- |
-| **1** | **Segera Hentikan Campaign 2** | Menghindari *revenue loss* sekitar **~$10.77k per cabang/minggu** dibanding Campaign 1. |
-| **2** | **Skenario Maksimasi Laba (Pilih Campaign 1)** | Memberikan kontribusi laba bersih tertinggi (**+$6,95 Juta net profit lift**) pada peluncuran skala penuh. |
-| **3** | **Skenario Efisiensi Anggaran (Pilih Campaign 3)** | Memberikan efisiensi modal pemasaran terbaik (**ROMI 9.63x** dengan biaya 50% lebih murah dari Campaign 1) dengan performa penjualan yang setara secara statistik. |
-| **4** | **Fokus pada Cabang Large Market** | Mengalokasikan proporsi budget promosi terbesar ke pasar berukuran besar untuk akselerasi pendapatan. |
+| **1** | **Immediately Decommission Campaign 2** | Eliminates an ongoing opportunity loss of **~$10.77k per store-week** compared to Campaign 1. |
+| **2** | **Profit Maximization Scenario: Deploy Campaign 1** | Generates the highest absolute bottom-line expansion (**+$6.95M net profit lift per quarter**) under full-scale rollout. |
+| **3** | **Budget-Constrained Scenario: Deploy Campaign 3** | Provides superior capital efficiency with a **9.63x ROMI** while requiring 50% less marketing expenditure than Campaign 1. |
+| **4** | **Prioritize Large Market Branches** | Target the highest concentration of marketing spend in Large Market locations to capture the highest sales response. |
 
 ---
 
-## 🔬 6. Methodology & Statistical Rigor
-
-1. **Data Preprocessing & Sanity Check**:
-   - Memastikan tidak ada *missing values* atau data duplikat.
-   - Pengecekan distribusi perlakuan across *Market Size* (Small, Medium, Large) dan *Age of Store* untuk menjamin *random assignment* bebas bias.
-2. **Exploratory Data Analysis (EDA)**:
-   - Analisis persebaran total pendapatan per variasi promosi.
-   - Distribusi penjualan mingguan menggunakan boxplot dan barplot.
-3. **Hypothesis Testing (Welch’s Two-Sample t-Test)**:
-   - **$H_0$**: Tidak terdapat perbedaan rata-rata penjualan antara promosi yang diuji ($\mu_A = \mu_B$).
-   - **$H_1$**: Terdapat perbedaan rata-rata penjualan yang signifikan ($\mu_A \neq \mu_B$).
-   - Digunakan *Welch's t-test* (`equal_var=False`) untuk mengantisipasi ketidaksamaan varians antar populasi sampel.
-
----
-
-## 📁 7. Project Structure
-
-```text
-Marketing_Campaign_Using_Statistics/
-├── assets/
-│   ├── sales_distribution.png
-│   ├── market_size_performance.png
-│   └── business_impact.png
-├── data/
-│   └── WA_Marketing-Campaign.csv
-├── app.py                                   # Streamlit Interactive Dashboard
-├── Marketing_Campaigns_Using_Statistics_.ipynb
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
----
-
-## 🚀 8. How to Run Locally
-
-### Jalankan Dashboard Streamlit:
-```bash
-# 1. Clone repository
-git clone https://github.com/Makrufkasr/Marketing_Campaign_Using_Statistics.git
-cd Marketing_Campaign_Using_Statistics
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Jalankan dashboard
-streamlit run app.py
-```
-
-### Jalankan Jupyter Notebook:
-```bash
-jupyter notebook Marketing_Campaigns_Using_Statistics_.ipynb
-```
-
----
-
-## 👤 Author
+## Author
 - **Makruf Kasr**
 - [LinkedIn Profile](https://www.linkedin.com/) • [GitHub Repository](https://github.com/Makrufkasr/Marketing_Campaign_Using_Statistics)
