@@ -26,6 +26,19 @@ To determine the most commercially viable marketing strategy, management designe
 - **Market Segments**: Small (60 records), Medium (320 records), and Large (168 records)
 - **Primary KPI**: Weekly Sales Revenue (recorded in thousands of USD, `$k`)
 
+### Methodology & Analytical Framework
+1. **A/B/n Randomized Controlled Trial (RCT) Design**:
+   - Random allocation of 137 store branches into 3 independent treatment cohorts (Promotion 1: 172 observations, Promotion 2: 188 observations, Promotion 3: 188 observations).
+2. **Data Cleansing & Sanity Check**:
+   - Verification of zero missing values, zero duplicated records, and validation of feature data types.
+   - Verification of treatment balance across *Market Size* and *Age of Store* to prevent selection bias.
+3. **Exploratory Data Analysis (EDA)**:
+   - Distributional analysis of sales variation using box plots and mean comparisons across campaign variations and market tiers.
+4. **Inferential Hypothesis Testing**:
+   - **Welch’s Two-Sample Independent t-Test** (`equal_var=False`): Formulated with $H_0: \mu_A = \mu_B$ vs $H_1: \mu_A \neq \mu_B$ at significance threshold $\alpha = 0.05$ to account for unequal group variances.
+5. **Business Impact & Financial Modeling**:
+   - Conversion of statistical sales lift into financial projections across 100 stores over 1 Quarter (12 weeks), accounting for a 60% gross profit margin, campaign expenditures, net profit lift, and Return on Marketing Investment (ROMI).
+
 ---
 
 ## 2. Executive Summary & Key Findings
